@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 5%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 267 86% 61%;
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    
+    --accent: 225 73% 57%;
+    --accent-foreground: 0 0% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-mediatorz-purple/10 selection:text-mediatorz-purple;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
+  }
+  
+  body {
+    background-image: 
+      radial-gradient(circle at 20% 35%, rgba(76, 29, 149, 0.15) 0%, transparent 20%),
+      radial-gradient(circle at 75% 44%, rgba(236, 72, 153, 0.1) 0%, transparent 30%),
+      radial-gradient(circle at 50% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 30%);
+    background-attachment: fixed;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl;
+  }
+  
+  .cosmic-card {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-br from-mediatorz-dark to-mediatorz-deep-purple/30 p-0.5;
+  }
+  
+  .cosmic-card::before {
+    content: "";
+    @apply absolute inset-0 bg-glow-conic opacity-30 blur-2xl;
+    animation: rotate-slow 8s linear infinite;
+  }
+  
+  .cosmic-card::after {
+    content: "";
+    @apply absolute inset-0.5 rounded-[calc(0.75rem-2px)] bg-mediatorz-dark;
+  }
+  
+  .cosmic-card-content {
+    @apply relative z-10;
+  }
+  
+  .aurora-border {
+    @apply relative rounded-xl p-[1px] overflow-hidden;
+    background: linear-gradient(
+      var(--rotate), 
+      rgba(139, 92, 246, 0.5), 
+      rgba(14, 165, 233, 0.5), 
+      rgba(236, 72, 153, 0.5)
+    );
+    animation: rotate-slow 5s linear infinite;
+  }
+  
+  .aurora-border::before {
+    content: "";
+    @apply absolute inset-0 bg-mediatorz-dark rounded-xl m-[2px];
+  }
+  
+  .aurora-border-content {
+    @apply relative z-10;
+  }
+  
+  .animated-blob {
+    @apply absolute rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob;
+  }
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
